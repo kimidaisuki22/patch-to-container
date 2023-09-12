@@ -16,7 +16,11 @@ RUN chmod +x *
 RUN ./main
 
 
-# FROM alpine # doesn't work
-FROM debian
+FROM alpine
+# FROM debian
 WORKDIR /dest
 COPY --from=Base /fix/No_name-0.1.1-Linux/bin .
+
+# This line fix problem on alpine: alpine doesn't have libm.so.5 in /lib
+# But I already have it in /dest, why?
+RUN cp libm.so.6 /lib/
