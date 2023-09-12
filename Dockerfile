@@ -31,3 +31,9 @@ COPY --from=Base /fix/No_name-0.1.1-Linux/bin .
 # But I already have it in /dest, why?
 # Answer: libstdc++ used it.
 # RUN cp libm.so.6 /lib/
+
+CMD [ "/dest/main" ]
+
+# ENTRYPOINT [ "/dest/main" ]
+# will make run  ... bash
+# result: /dest/main bash
